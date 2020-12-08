@@ -55,8 +55,8 @@ rights=len(rightList)
 secondRights=len(secondRightList)
 total=rights+secondRights
 finalArray=[]
-counter=3
-secondCounter=3
+counter=0
+secondCounter=0
 elements=soup.find_all("tr")
 for element in elements:
 	pack=element.find_all("td")
