@@ -113,6 +113,16 @@ while True:
 		else:
 			print("\nFalse, the answer is: "+Fore.GREEN,el["capital"],Style.RESET_ALL+"in: ",Fore.BLUE,el["continent"]+Style.RESET_ALL)
 			print("Memo: ",Fore.RED+el["memo"],"\n",Style.RESET_ALL)
+			with open("./rightList",'r') as rightfile:
+					lines=rightfile.readlines()
+			with open("./rightList",'w') as rightFile:
+				string=str(el["country"]+"%"+el["capital"]+"%"+el["memo"]+"%"+el["continent"]+"%\n")
+				for line in lines:
+					if line != string:
+						rightFile.write(line)
+			rightList.pop(question)
+			finalArray.append(el)
+			print(finalArray[len(finalArray)-1])
 			continue
 	else :
 		question=random.randint(0,len(finalArray)-1)
