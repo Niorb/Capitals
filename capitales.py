@@ -7,7 +7,7 @@ from colorama import Fore, Style,init
 
 page= requests.get("https://jeretiens.net/tous-les-pays-du-monde-et-leur-capitale/");
 
-#random change
+#random changes
 soup=BeautifulSoup(page.text,features="lxml")
 rightList=[]
 secondRightList=[]
