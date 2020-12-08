@@ -55,8 +55,8 @@ rights=len(rightList)
 secondRights=len(secondRightList)
 total=rights+secondRights
 finalArray=[]
-counter=0
-secondCounter=0
+counter=3
+secondCounter=3
 elements=soup.find_all("tr")
 for element in elements:
 	pack=element.find_all("td")
@@ -85,7 +85,18 @@ while True:
 			continue
 		else:
 			print("\nFalse, the answer is: "+Fore.GREEN,el["capital"],Style.RESET_ALL+"in: ",Fore.BLUE,el["continent"]+Style.RESET_ALL)
+			string=str(el["country"]+"%"+el["capital"]+"%"+el["memo"]+"%"+el["continent"]+"%\n")
 			print("Memo: ",Fore.RED+el["memo"],"\n",Style.RESET_ALL)
+			with open("./secondRightList",'r') as secondRightFile:
+					lines=secondRightFile.readlines()
+			with open("./secondRightList",'w') as secondRightFile:
+				for line in lines:
+					if line != string:
+						secondRightFile.write(line)
+			with open("./rightList",'a') as rightFile:
+				rightFile.write(string)
+			secondRightList.pop(question)
+			rightList.append(el)
 			continue
 		
 	elif counter==3 and len(rightList)!=0:
@@ -122,7 +133,6 @@ while True:
 						rightFile.write(line)
 			rightList.pop(question)
 			finalArray.append(el)
-			print(finalArray[len(finalArray)-1])
 			continue
 	else :
 		question=random.randint(0,len(finalArray)-1)
