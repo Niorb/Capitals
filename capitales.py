@@ -71,7 +71,7 @@ for element in elements:
 while True:
 	print(counter)
 	print("Rights: ",len(rightList),"Confirmed: ",len(secondRightList),"Total: ", len(rightList)+len(secondRightList),"/199")
-	if (secondCounter==3 and counter==3 and len(secondRightList)!=0):
+	if (secondCounter==5 and counter==3 and len(secondRightList)!=0):
 		secondCounter=0
 		counter=0
 		question=random.randint(0,len(secondRightList)-1)
