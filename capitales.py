@@ -4,17 +4,22 @@ from bs4 import BeautifulSoup
 import requests
 import random
 from colorama import Fore, Style,init
+import argparse
 
 page= requests.get("https://jeretiens.net/tous-les-pays-du-monde-et-leur-capitale/");
 
-#random changes
+
+parser=argparse.ArgumentParser()
+
+parser.add_argument("-b","--blank",help="doesn't save your results to a file and practice all the capitals",action="store_true")
+
+args=parser.parse_args()
+
 soup=BeautifulSoup(page.text,features="lxml")
 rightList=[]
 secondRightList=[]
-print("Type \"blank\" to get all the capitals without saving them, otherwise just press ENTER" );
-run=input()
 blank= False
-if run=="blank":
+if args.blank:
 	blank=True
 else:
 	with open("./rightList","r") as file:
@@ -112,16 +117,16 @@ while True:
 			if(answer==el["capital"].strip()):
 				print("Right answer ! the continent is: "+Fore.BLUE +el["continent"]+Style.RESET_ALL)
 				print("Memo:"+ Fore.RED+el["memo"]+"\n"+Style.RESET_ALL)
+				string=str(el["country"]+"%"+el["capital"]+"%"+el["memo"]+"%"+el["continent"]+"%\n")
 				with open("./secondRightList",'a') as file:
-					string=str(el["country"]+"%"+el["capital"]+"%"+el["memo"]+"%"+el["continent"]+"%\n")
 					secondRightList.append(el)
 					file.write(string)
-					with open("./rightList",'r') as rightfile:
-						lines=rightfile.readlines()
-					with open("./rightList",'w') as rightFile:
-						for line in lines:
-							if line != string:
-								rightFile.write(line)
+				with open("./rightList",'r') as rightfile:
+					lines=rightfile.readlines()
+				with open("./rightList",'w') as rightFile:
+					for line in lines:
+						if line != string:
+							rightFile.write(line)
 				rightList.pop(question)
 				continue
 			else:
