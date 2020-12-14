@@ -6,19 +6,24 @@ import random
 from colorama import Fore, Style,init
 import argparse
 
-page= requests.get("https://jeretiens.net/tous-les-pays-du-monde-et-leur-capitale/");
-
-
 parser=argparse.ArgumentParser()
 
-parser.add_argument("-b","--blank",help="doesn't save your results to a file and practice all the capitals",action="store_true")
+parser.add_argument("-b","--blank",help="Doesn't save your results to a file and practice all the capitals",action="store_true")
+parser.add_argument("-r","--reset",help="Reset your known capitals lists and starts a classic run",action="store_true")
 
 args=parser.parse_args()
 
+page= requests.get("https://jeretiens.net/tous-les-pays-du-monde-et-leur-capitale/");
 soup=BeautifulSoup(page.text,features="lxml")
 rightList=[]
 secondRightList=[]
 blank= False
+
+if args.reset:
+	with open("./rightList",'w') as file:
+		file.write("")
+	with open("./secondRightList",'w') as file:
+		file.write("")
 if args.blank:
 	blank=True
 else:
