@@ -27,7 +27,7 @@ if args.reset:
 if args.blank:
 	blank=True
 else:
-	with open("./rightList","r") as file:
+	with open("./rightList","r+") as file:
 		for line in file.readlines():
 			line=line.strip()
 			elementCount=0
@@ -47,7 +47,7 @@ else:
 				line=line[index:]
 			rightList.append(finalElement)
 
-	with open("./secondRightList","r") as file:
+	with open("./secondRightList","r+") as file:
 		for line in file.readlines():
 			line=line.strip()
 			elementCount=0
