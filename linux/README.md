@@ -1,5 +1,6 @@
 # Capitals
-Dowload python dependencies manually or use --dependencies (-d) to install them all in one
+Dowload python dependencies manually or use ./install.sh to install them all in one
+pip3 install -r requirements also does the job
 Help practice all capitals (in French), just start the script with python capitales.py.
 
 usage: capitales.py [-h] [-b] [-r]
