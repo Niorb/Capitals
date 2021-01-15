@@ -5,6 +5,7 @@ import requests
 import random
 from colorama import Fore, Style,init
 import argparse
+init()
 
 parser=argparse.ArgumentParser()
 
