@@ -150,7 +150,7 @@ while True:
 		else :
 			question=random.randint(0,len(finalArray)-1)
 			el=finalArray[question]
-			print("Capitalle de :",Fore.YELLOW+el["country"]+Style.RESET_ALL)
+			print("Capitale de :",Fore.YELLOW+el["country"]+Style.RESET_ALL)
 			answer=input()
 			if(answer==el["capital"].strip()):
 				counter=counter+1
@@ -169,7 +169,7 @@ while True:
 	else:
 		question=random.randint(0,len(finalArray)-1)
 		el=finalArray[question]
-		print("Capitalle de :",Fore.YELLOW+el["country"]+Style.RESET_ALL)
+		print("Capitale de :",Fore.YELLOW+el["country"]+Style.RESET_ALL)
 		answer=input()
 		if(answer==el["capital"].strip()):
 			print(len(finalArray)+"/199")
